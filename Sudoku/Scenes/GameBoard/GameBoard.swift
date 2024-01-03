@@ -7,19 +7,6 @@
 
 import SpriteKit
 
-class View {
-
-    var bounds: CGRect
-
-    weak var scene: SKScene!
-
-    init(bounds: CGRect, scene: SKScene!) {
-        self.bounds = bounds
-        self.scene = scene
-    }
-
-}
-
 final class GameBoard: View {
 
     var tiles: [Tile] = []

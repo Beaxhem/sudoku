@@ -22,6 +22,8 @@
 		710429AE2B45A686008A80DE /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429AD2B45A686008A80DE /* Tile.swift */; };
 		710429B12B45A891008A80DE /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429B02B45A891008A80DE /* Line.swift */; };
 		710429B62B45B8FE008A80DE /* BoardInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429B52B45B8FE008A80DE /* BoardInput.swift */; };
+		710429B82B45C0E9008A80DE /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429B72B45C0E9008A80DE /* View.swift */; };
+		710429BA2B45C117008A80DE /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429B92B45C117008A80DE /* Button.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		710429AD2B45A686008A80DE /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		710429B02B45A891008A80DE /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		710429B52B45B8FE008A80DE /* BoardInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardInput.swift; sourceTree = "<group>"; };
+		710429B72B45C0E9008A80DE /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		710429B92B45C117008A80DE /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				710429B02B45A891008A80DE /* Line.swift */,
+				710429B72B45C0E9008A80DE /* View.swift */,
+				710429B92B45C117008A80DE /* Button.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -316,12 +322,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				710429B82B45C0E9008A80DE /* View.swift in Sources */,
 				710429AC2B45A66E008A80DE /* GameBoard.swift in Sources */,
 				7104297E2B459984008A80DE /* GameScene.swift in Sources */,
 				710429B62B45B8FE008A80DE /* BoardInput.swift in Sources */,
 				710429AE2B45A686008A80DE /* Tile.swift in Sources */,
 				710429B12B45A891008A80DE /* Line.swift in Sources */,
 				710429802B459984008A80DE /* GameViewController.swift in Sources */,
+				710429BA2B45C117008A80DE /* Button.swift in Sources */,
 				710429782B459984008A80DE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
