@@ -37,6 +37,9 @@ final class GameBoard: View {
 
         tile.isSelected = true
         selectedTile = tile
+
+        highlightTheSameTiles()
+        checkIfError()
     }
 
 }
@@ -49,6 +52,65 @@ extension GameBoard: BoardInputDelegate {
         } else {
             selectedTile?.text = text
         }
+        highlightTheSameTiles()
+        checkIfError()
+    }
+
+    func setInput(_ text: String, forX x: Int, y: Int) {
+        let index = y * 9 + x
+        let tile = tiles[index]
+        tile.text = text
+    }
+
+}
+
+private extension GameBoard {
+
+    func highlightTheSameTiles() {
+        guard let selectedTile else { return }
+        let selectedTileText = selectedTile.text
+
+        for tile in self.tiles {
+            tile.isHighlighted = tile.text == selectedTileText
+        }
+    }
+
+}
+
+private extension GameBoard {
+
+    func checkIfError() {
+        for i in 0..<tiles.count {
+            let tile = tiles[i]
+            let isValid = isValid(tile: tile, at: i)
+            tile.isError = !isValid
+        }
+    }
+
+    func isValid(tile: Tile, at index: Int) -> Bool {
+        if tile.text == "" { return true }
+
+        let startX = index - index % 9
+        let endIndex = startX + 9
+
+        for i in startX..<endIndex {
+            if i == index { continue }
+
+            let t = tiles[i]
+            if t.text == tile.text {
+                return false
+            }
+        }
+
+        for i in stride(from: index, to: 81, by: 9) {
+            if i == index { continue }
+            let t = tiles[i]
+            if t.text == tile.text {
+                return false
+            }
+        }
+
+        return true
     }
 
 }

@@ -19,6 +19,30 @@ class Tile: View {
         }
     }
 
+    var isHighlighted: Bool = false {
+        didSet {
+            labelNode.fontColor = isHighlighted ? .blue : .label
+
+            if !isSelected && !text.isEmpty {
+                tileNode.fillColor = isHighlighted ? .gray.withAlphaComponent(0.15) : .clear
+            }
+        }
+    }
+
+    var isError: Bool = false {
+        didSet {
+            if isError {
+                labelNode.fontColor = .red
+                tileNode.fillColor = .red.withAlphaComponent(0.15)
+            } else {
+                let s = isSelected
+                self.isSelected = s
+                let h = isHighlighted
+                self.isHighlighted = h
+            }
+        }
+    }
+
     var text: String = "" {
         didSet {
             labelNode.text = text
