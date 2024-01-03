@@ -7,13 +7,20 @@
 
 import SpriteKit
 
-final class GameBoard {
-
-    var frame: CGRect
+class View {
 
     var bounds: CGRect
 
     weak var scene: SKScene!
+
+    init(bounds: CGRect, scene: SKScene!) {
+        self.bounds = bounds
+        self.scene = scene
+    }
+
+}
+
+final class GameBoard: View {
 
     var tiles: [Tile] = []
 
@@ -23,12 +30,14 @@ final class GameBoard {
         bounds.width / 9
     }
 
-    init(gameRect: CGRect, scene: SKScene) {
+    init(frame: CGRect, scene: SKScene) {
         let paddingX: CGFloat = 100
-        self.frame = gameRect
-        let offsetX = gameRect.width / 2 - paddingX
-        self.bounds = .init(x: -offsetX, y: 0, width: gameRect.width - paddingX * 2, height: gameRect.width - paddingX * 2)
-        self.scene = scene
+        let offsetX = frame.width / 2 - paddingX
+        super.init(bounds: .init(x: -offsetX,
+                                 y: 0,
+                                 width: frame.width - paddingX * 2,
+                                 height: frame.width - paddingX * 2),
+                   scene: scene)
 
         setupBoard()
     }
@@ -41,6 +50,18 @@ final class GameBoard {
 
         tile.isSelected = true
         selectedTile = tile
+    }
+
+}
+
+extension GameBoard: BoardInputDelegate {
+
+    func setInput(_ text: String) {
+        if selectedTile?.text == text {
+            selectedTile?.text = ""
+        } else {
+            selectedTile?.text = text
+        }
     }
 
 }
@@ -58,10 +79,11 @@ private extension GameBoard {
 
         for y in stride(from: 0 as CGFloat, to: 9, by: 1) {
             for x in stride(from: 0 as CGFloat, to: 9, by: 1) {
-                let tile = Tile(rect: .init(x: x * tileWidth + bounds.minX,
-                                            y: y * tileWidth + bounds.minY,
-                                            width: tileWidth,
-                                            height: tileWidth))
+                let tile = Tile(frame: .init(x: x * tileWidth + bounds.minX,
+                                             y: y * tileWidth + bounds.minY,
+                                             width: tileWidth,
+                                             height: tileWidth),
+                                scene: scene)
                 tile.addAsChild(to: scene)
                 tiles.append(tile)
             }

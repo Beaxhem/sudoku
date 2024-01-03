@@ -8,17 +8,26 @@
 import SpriteKit
 import GameplayKit
 
+
+
 class GameScene: SKScene {
+
+    var boardInput: BoardInput!
 
     var gameBoard: GameBoard!
 
     override func didMove(to view: SKView) {
         self.backgroundColor = .systemBackground
-        gameBoard = .init(gameRect: frame, scene: self)
+        gameBoard = .init(frame: frame, scene: self)
+        boardInput = .init(frame: frame,
+                           y: gameBoard.bounds.minY - 70,
+                           scene: self)
+        boardInput.delegate = gameBoard
     }
 
     func touchDown(at pos: CGPoint) {
         gameBoard?.didTouch(at: pos)
+        boardInput?.didTouch(at: pos)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

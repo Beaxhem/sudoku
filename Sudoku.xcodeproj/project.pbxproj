@@ -21,6 +21,7 @@
 		710429AC2B45A66E008A80DE /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429AB2B45A66E008A80DE /* GameBoard.swift */; };
 		710429AE2B45A686008A80DE /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429AD2B45A686008A80DE /* Tile.swift */; };
 		710429B12B45A891008A80DE /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429B02B45A891008A80DE /* Line.swift */; };
+		710429B62B45B8FE008A80DE /* BoardInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429B52B45B8FE008A80DE /* BoardInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		710429AB2B45A66E008A80DE /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		710429AD2B45A686008A80DE /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		710429B02B45A891008A80DE /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		710429B52B45B8FE008A80DE /* BoardInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,16 +110,11 @@
 		710429762B459984008A80DE /* Sudoku */ = {
 			isa = PBXGroup;
 			children = (
-				710429AF2B45A889008A80DE /* Node */,
-				710429AA2B45A667008A80DE /* GameBoard */,
-				710429772B459984008A80DE /* AppDelegate.swift */,
-				710429792B459984008A80DE /* GameScene.sks */,
-				7104297B2B459984008A80DE /* Actions.sks */,
-				7104297D2B459984008A80DE /* GameScene.swift */,
+				710429B42B45B8D1008A80DE /* Scenes */,
+				710429B32B45B8C0008A80DE /* Resources */,
+				710429B22B45B8B2008A80DE /* Application */,
+				710429AF2B45A889008A80DE /* Common */,
 				7104297F2B459984008A80DE /* GameViewController.swift */,
-				710429812B459984008A80DE /* Main.storyboard */,
-				710429842B459985008A80DE /* Assets.xcassets */,
-				710429862B459985008A80DE /* LaunchScreen.storyboard */,
 			);
 			path = Sudoku;
 			sourceTree = "<group>";
@@ -148,12 +145,42 @@
 			path = GameBoard;
 			sourceTree = "<group>";
 		};
-		710429AF2B45A889008A80DE /* Node */ = {
+		710429AF2B45A889008A80DE /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				710429B02B45A891008A80DE /* Line.swift */,
 			);
-			path = Node;
+			path = Common;
+			sourceTree = "<group>";
+		};
+		710429B22B45B8B2008A80DE /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				710429862B459985008A80DE /* LaunchScreen.storyboard */,
+				710429772B459984008A80DE /* AppDelegate.swift */,
+				710429812B459984008A80DE /* Main.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		710429B32B45B8C0008A80DE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				710429842B459985008A80DE /* Assets.xcassets */,
+				7104297B2B459984008A80DE /* Actions.sks */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		710429B42B45B8D1008A80DE /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				710429AA2B45A667008A80DE /* GameBoard */,
+				710429792B459984008A80DE /* GameScene.sks */,
+				7104297D2B459984008A80DE /* GameScene.swift */,
+				710429B52B45B8FE008A80DE /* BoardInput.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +318,7 @@
 			files = (
 				710429AC2B45A66E008A80DE /* GameBoard.swift in Sources */,
 				7104297E2B459984008A80DE /* GameScene.swift in Sources */,
+				710429B62B45B8FE008A80DE /* BoardInput.swift in Sources */,
 				710429AE2B45A686008A80DE /* Tile.swift in Sources */,
 				710429B12B45A891008A80DE /* Line.swift in Sources */,
 				710429802B459984008A80DE /* GameViewController.swift in Sources */,
