@@ -23,7 +23,7 @@ class Tile: View {
         didSet {
             labelNode.fontColor = isHighlighted ? .blue : .label
 
-            if !isSelected && !text.isEmpty {
+            if !isSelected && value != 0 {
                 tileNode.fillColor = isHighlighted ? .gray.withAlphaComponent(0.15) : .clear
             }
         }
@@ -43,9 +43,13 @@ class Tile: View {
         }
     }
 
-    var text: String = "" {
+    var value: Int = 0 {
         didSet {
-            labelNode.text = text
+            if value > 0, value < 10 {
+                labelNode.text = "\(value)"
+            } else {
+                labelNode.text = ""
+            }
             updateLabelPosition()
         }
     }
@@ -87,19 +91,6 @@ private extension Tile {
 
     func updateLabelPosition() {
         labelNode.position = .init(x: bounds.minX + bounds.width / 2, y: bounds.minY + bounds.height / 2 - labelNode.frame.height / 2)
-    }
-
-}
-
-extension [Tile] {
-
-    func tile(at pos: CGPoint) -> Tile? {
-        for tile in self {
-            if tile.intersects(point: pos) {
-                return tile
-            }
-        }
-        return nil
     }
 
 }

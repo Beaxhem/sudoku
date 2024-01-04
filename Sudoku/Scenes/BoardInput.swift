@@ -8,7 +8,7 @@
 import SpriteKit
 
 protocol BoardInputDelegate: AnyObject {
-    func setInput(_ text: String)
+    func setValue(_ value: Int)
 }
 
 class BoardInput: View {
@@ -36,8 +36,11 @@ extension BoardInput {
 
     func didTouch(at pos: CGPoint) {
         for button in buttons {
-            guard button.intersects(point: pos) else { continue }
-            delegate?.setInput(button.text)
+            guard button.intersects(point: pos),
+                  let value = Int(button.text) else {
+                continue
+            }
+            delegate?.setValue(value)
             return
         }
     }

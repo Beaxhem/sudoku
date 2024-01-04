@@ -1,5 +1,5 @@
 //
-//  GameBoard.swift
+//  GameBoardView.swift
 //  Sudoku
 //
 //  Created by Illia Senchukov on 03.01.2024.
@@ -7,9 +7,9 @@
 
 import SpriteKit
 
-final class GameBoard: View {
+final class GameBoardView: View {
 
-    var tiles: [Tile] = []
+    var board: GameBoard!
 
     var selectedTile: Tile?
 
@@ -17,7 +17,7 @@ final class GameBoard: View {
         bounds.width / 9
     }
 
-    init(frame: CGRect, scene: SKScene) {
+    init(frame: CGRect, scene: SKScene, grid: [[Int]]) {
         let paddingX: CGFloat = 100
         let offsetX = frame.width / 2 - paddingX
         super.init(bounds: .init(x: -offsetX,
@@ -26,11 +26,11 @@ final class GameBoard: View {
                                  height: frame.width - paddingX * 2),
                    scene: scene)
 
-        setupBoard()
+        setupBoard(grid: grid)
     }
 
     func didTouch(at pos: CGPoint) {
-        guard let tile = tiles.tile(at: pos) else { return }
+        guard let tile = board.tile(at: pos) else { return }
 
         selectedTile?.isSelected = false
         selectedTile = nil
@@ -39,105 +39,58 @@ final class GameBoard: View {
         selectedTile = tile
 
         highlightTheSameTiles()
-        checkIfError()
+        board.checkIfError()
     }
 
 }
 
-extension GameBoard: BoardInputDelegate {
+extension GameBoardView: BoardInputDelegate {
 
-    func setInput(_ text: String) {
-        if selectedTile?.text == text {
-            selectedTile?.text = ""
+    func setValue(_ value: Int) {
+        if selectedTile?.value == value {
+            selectedTile?.value = 0
         } else {
-            selectedTile?.text = text
+            selectedTile?.value = value
         }
         highlightTheSameTiles()
-        checkIfError()
-    }
-
-    func setInput(_ text: String, forX x: Int, y: Int) {
-        let index = y * 9 + x
-        let tile = tiles[index]
-        tile.text = text
+        board.checkIfError()
     }
 
 }
 
-private extension GameBoard {
+private extension GameBoardView {
 
     func highlightTheSameTiles() {
         guard let selectedTile else { return }
-        let selectedTileText = selectedTile.text
-
-        for tile in self.tiles {
-            tile.isHighlighted = tile.text == selectedTileText
-        }
+        board.highlightAll(withValue: selectedTile.value)
     }
 
 }
 
-private extension GameBoard {
+private extension GameBoardView {
 
-    func checkIfError() {
-        for i in 0..<tiles.count {
-            let tile = tiles[i]
-            let isValid = isValid(tile: tile, at: i)
-            tile.isError = !isValid
-        }
-    }
-
-    func isValid(tile: Tile, at index: Int) -> Bool {
-        if tile.text == "" { return true }
-
-        let startX = index - index % 9
-        let endIndex = startX + 9
-
-        for i in startX..<endIndex {
-            if i == index { continue }
-
-            let t = tiles[i]
-            if t.text == tile.text {
-                return false
-            }
-        }
-
-        for i in stride(from: index, to: 81, by: 9) {
-            if i == index { continue }
-            let t = tiles[i]
-            if t.text == tile.text {
-                return false
-            }
-        }
-
-        return true
-    }
-
-}
-
-private extension GameBoard {
-
-    func setupBoard() {
-        setupTiles()
+    func setupBoard(grid: [[Int]]) {
+        setupTiles(grid: grid)
         setupLines()
     }
 
-    func setupTiles() {
+    func setupTiles(grid: [[Int]]) {
         let tileWidth = self.tileWidth
         var tiles: [Tile] = []
 
-        for y in stride(from: 0 as CGFloat, to: 9, by: 1) {
-            for x in stride(from: 0 as CGFloat, to: 9, by: 1) {
-                let tile = Tile(frame: .init(x: x * tileWidth + bounds.minX,
-                                             y: y * tileWidth + bounds.minY,
+        for y in stride(from: 0, to: 9, by: 1) {
+            for x in stride(from: 0, to: 9, by: 1) {
+                let tile = Tile(frame: .init(x: CGFloat(x) * tileWidth + bounds.minX,
+                                             y: CGFloat(y) * tileWidth + bounds.minY,
                                              width: tileWidth,
                                              height: tileWidth),
                                 scene: scene)
+                tile.value = grid[y][x]
                 tile.addAsChild(to: scene)
                 tiles.append(tile)
             }
         }
-        self.tiles = tiles
+        self.board = .init(tiles: tiles)
     }
 
     func setupLines() {

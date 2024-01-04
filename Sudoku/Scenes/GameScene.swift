@@ -12,19 +12,22 @@ class GameScene: SKScene {
 
     var boardInput: BoardInput!
 
-    var gameBoard: GameBoard!
+    var gameBoardView: GameBoardView!
 
     override func didMove(to view: SKView) {
         self.backgroundColor = .systemBackground
-        gameBoard = .init(frame: frame, scene: self)
+        let generator = SudokuGenerator()
+        let puzzle = generator.generatePuzzle(numberOfClues: 30)
+
+        gameBoardView = .init(frame: frame, scene: self, grid: puzzle)
         boardInput = .init(frame: frame,
-                           y: gameBoard.bounds.minY - 70,
+                           y: gameBoardView.bounds.minY - 70,
                            scene: self)
-        boardInput.delegate = gameBoard
+        boardInput.delegate = gameBoardView
     }
 
     func touchDown(at pos: CGPoint) {
-        gameBoard?.didTouch(at: pos)
+        gameBoardView?.didTouch(at: pos)
         boardInput?.didTouch(at: pos)
     }
 
@@ -32,10 +35,6 @@ class GameScene: SKScene {
         for touch in touches {
             touchDown(at: touch.location(in: self))
         }
-    }
-
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
     }
 
 }
