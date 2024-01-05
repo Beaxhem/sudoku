@@ -74,7 +74,7 @@ private extension StartGameScene {
 }
 
 enum GameMode: Int {
-    case easy = 30
-    case medium = 40
-    case hard = 50
+    case easy = 25
+    case medium = 34
+    case hard = 40
 }

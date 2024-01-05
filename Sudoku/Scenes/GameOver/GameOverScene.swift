@@ -32,7 +32,7 @@ class GameOverScene: SKScene {
             guard tryAgainButton.intersects(point: touch.location(in: self)) else { continue }
 
             let transition = SKTransition.crossFade(withDuration: 1)
-            let scene = SKScene(fileNamed: "GameScene")!
+            let scene = SKScene(fileNamed: "StartGameScene")!
             scene.scaleMode = .aspectFill
             view?.presentScene(scene, transition: transition)
             return
