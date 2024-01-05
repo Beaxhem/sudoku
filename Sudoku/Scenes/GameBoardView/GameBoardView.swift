@@ -7,6 +7,10 @@
 
 import SpriteKit
 
+protocol GameBoardDelegate: AnyObject {
+    func didMakeMistake()
+}
+
 final class GameBoardView: View {
 
     var board: GameBoard!
@@ -16,6 +20,8 @@ final class GameBoardView: View {
     var tileWidth: CGFloat {
         bounds.width / 9
     }
+
+    weak var delegate: GameBoardDelegate?
 
     init(frame: CGRect, scene: SKScene, grid: [[Int]]) {
         let paddingX: CGFloat = 100
@@ -39,7 +45,7 @@ final class GameBoardView: View {
         selectedTile = tile
 
         highlightTheSameTiles()
-        board.checkIfError()
+        _ = board.checkIfError()
     }
 
 }
@@ -53,7 +59,11 @@ extension GameBoardView: BoardInputDelegate {
             selectedTile?.value = value
         }
         highlightTheSameTiles()
-        board.checkIfError()
+
+        let madeMistake = board.checkIfError()
+        if madeMistake {
+            delegate?.didMakeMistake()
+        }
     }
 
 }

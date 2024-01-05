@@ -19,12 +19,16 @@ final class GameBoard {
 
 extension GameBoard {
 
-    func checkIfError() {
+    func checkIfError() -> Bool {
+        var madeError = false
         for i in 0..<tiles.count {
             let tile = tiles[i]
             let isValid = isValid(tile: tile, at: i)
+            madeError = madeError || !isValid
             tile.isError = !isValid
         }
+
+        return madeError
     }
 
     private func isValid(tile: Tile, at index: Int) -> Bool {
