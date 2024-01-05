@@ -27,6 +27,7 @@
 		710429BD2B462F22008A80DE /* SudokuGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429BC2B462F22008A80DE /* SudokuGenerator.swift */; };
 		710429BF2B4631C6008A80DE /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429BE2B4631C6008A80DE /* GameBoard.swift */; };
 		710429C22B478AE9008A80DE /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429C12B478AE9008A80DE /* UIFont.swift */; };
+		710429C62B478B3F008A80DE /* HealthBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429C52B478B3F008A80DE /* HealthBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		710429BC2B462F22008A80DE /* SudokuGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuGenerator.swift; sourceTree = "<group>"; };
 		710429BE2B4631C6008A80DE /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		710429C12B478AE9008A80DE /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		710429C52B478B3F008A80DE /* HealthBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 		710429B42B45B8D1008A80DE /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				710429C42B478B3A008A80DE /* HealthBarView */,
 				710429AA2B45A667008A80DE /* GameBoardView */,
 				710429792B459984008A80DE /* GameScene.sks */,
 				7104297D2B459984008A80DE /* GameScene.swift */,
@@ -212,6 +215,14 @@
 				710429C12B478AE9008A80DE /* UIFont.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		710429C42B478B3A008A80DE /* HealthBarView */ = {
+			isa = PBXGroup;
+			children = (
+				710429C52B478B3F008A80DE /* HealthBarView.swift */,
+			);
+			path = HealthBarView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,6 +362,7 @@
 				710429B82B45C0E9008A80DE /* View.swift in Sources */,
 				710429AC2B45A66E008A80DE /* GameBoardView.swift in Sources */,
 				7104297E2B459984008A80DE /* GameScene.swift in Sources */,
+				710429C62B478B3F008A80DE /* HealthBarView.swift in Sources */,
 				710429B62B45B8FE008A80DE /* BoardInput.swift in Sources */,
 				710429AE2B45A686008A80DE /* Tile.swift in Sources */,
 				710429B12B45A891008A80DE /* Line.swift in Sources */,

@@ -10,12 +10,17 @@ import GameplayKit
 
 class GameScene: SKScene {
 
+    var healthBar: HealthBarView!
+
     var boardInput: BoardInput!
 
     var gameBoardView: GameBoardView!
 
     override func didMove(to view: SKView) {
         self.backgroundColor = .systemBackground
+
+        healthBar = .init(maxHealth: Constant.maxHealth, frame: frame, scene: self)
+
         let generator = SudokuGenerator()
         let puzzle = generator.generatePuzzle(numberOfClues: 30)
 
@@ -24,6 +29,8 @@ class GameScene: SKScene {
                            y: gameBoardView.bounds.minY - 70,
                            scene: self)
         boardInput.delegate = gameBoardView
+
+        healthBar.setHealth(Constant.maxHealth)
     }
 
     func touchDown(at pos: CGPoint) {
@@ -35,6 +42,14 @@ class GameScene: SKScene {
         for touch in touches {
             touchDown(at: touch.location(in: self))
         }
+    }
+
+}
+
+extension GameScene {
+
+    enum Constant {
+        static let maxHealth = 3
     }
 
 }
