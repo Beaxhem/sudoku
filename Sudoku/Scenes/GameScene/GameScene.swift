@@ -18,6 +18,8 @@ class GameScene: SKScene {
 
     var gameBoardView: GameBoardView!
 
+    var gameLost = false
+
     override func didMove(to view: SKView) {
         self.backgroundColor = .systemBackground
 
@@ -43,6 +45,8 @@ class GameScene: SKScene {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard !gameLost else { return }
+
         for touch in touches {
             touchDown(at: touch.location(in: self))
         }
@@ -57,9 +61,12 @@ extension GameScene: GameBoardDelegate {
         healthBar.setHealth(health)
 
         guard health == 0 else { return }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            print("You lost")
+        gameLost = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            let scene = SKScene(fileNamed: "GameOverScene")!
+            scene.scaleMode = .aspectFill
+            let transition = SKTransition.fade(with: .white, duration: 1)
+            self?.scene?.view?.presentScene(scene, transition: transition)
         }
     }
 

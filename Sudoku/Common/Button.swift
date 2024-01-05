@@ -19,6 +19,16 @@ class Button: View {
         }
     }
 
+    var cornerRadius: CGFloat = 0 {
+        didSet {
+            let path = CGPath(roundedRect: bounds,
+                              cornerWidth: cornerRadius,
+                              cornerHeight: cornerRadius,
+                              transform: nil)
+            backgroundNode.path = path
+        }
+    }
+
     init(frame: CGRect, text: String, scene: SKScene) {
         backgroundNode = SKShapeNode(rect: frame)
         labelNode = SKLabelNode(fontNamed: UIFont.boldSystemFont(ofSize: 17).fontName)
@@ -50,7 +60,8 @@ class Button: View {
 private extension Button {
 
     func updateLabelPosition() {
-        labelNode.position = .init(x: bounds.minX + bounds.width / 2, y: bounds.minY + bounds.height / 2 - labelNode.frame.height / 2)
+        labelNode.position = .init(x: bounds.minX + bounds.width / 2,
+                                   y: bounds.minY + bounds.height / 2 - (bounds.height - labelNode.frame.height) / 2)
     }
 
 }
