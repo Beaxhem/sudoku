@@ -20,13 +20,15 @@ class GameScene: SKScene {
 
     var gameLost = false
 
+    var gameMode: GameMode!
+
     override func didMove(to view: SKView) {
         self.backgroundColor = .systemBackground
 
         healthBar = .init(maxHealth: Constant.maxHealth, frame: frame, scene: self)
 
         let generator = SudokuGenerator()
-        let puzzle = generator.generatePuzzle(numberOfClues: 30)
+        let puzzle = generator.generatePuzzle(numberOfClues: gameMode.rawValue)
 
         gameBoardView = .init(frame: frame, scene: self, grid: puzzle)
         gameBoardView.delegate = self

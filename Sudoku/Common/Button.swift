@@ -61,7 +61,7 @@ private extension Button {
 
     func updateLabelPosition() {
         labelNode.position = .init(x: bounds.minX + bounds.width / 2,
-                                   y: bounds.minY + bounds.height / 2 - (bounds.height - labelNode.frame.height) / 2)
+                                   y: bounds.minY + bounds.height / 2 + (labelNode.frame.height - bounds.height) / 3)
     }
 
 }
