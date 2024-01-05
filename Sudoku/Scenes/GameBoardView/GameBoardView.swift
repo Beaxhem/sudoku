@@ -21,7 +21,7 @@ final class GameBoardView: View {
         let paddingX: CGFloat = 100
         let offsetX = frame.width / 2 - paddingX
         super.init(bounds: .init(x: -offsetX,
-                                 y: 0,
+                                 y: -100,
                                  width: frame.width - paddingX * 2,
                                  height: frame.width - paddingX * 2),
                    scene: scene)

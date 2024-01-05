@@ -15,13 +15,13 @@ class Tile: View {
 
     var isSelected: Bool = false {
         didSet {
-            tileNode.fillColor = isSelected ? .blue.withAlphaComponent(0.15) : .clear
+            tileNode.fillColor = isSelected ? .systemBlue.withAlphaComponent(0.15) : .clear
         }
     }
 
     var isHighlighted: Bool = false {
         didSet {
-            labelNode.fontColor = isHighlighted ? .blue : .label
+            labelNode.fontColor = isHighlighted ? .systemBlue : .label
 
             if !isSelected && value != 0 {
                 tileNode.fillColor = isHighlighted ? .gray.withAlphaComponent(0.15) : .clear
@@ -32,8 +32,8 @@ class Tile: View {
     var isError: Bool = false {
         didSet {
             if isError {
-                labelNode.fontColor = .red
-                tileNode.fillColor = .red.withAlphaComponent(0.15)
+                labelNode.fontColor = .systemRed
+                tileNode.fillColor = .systemRed.withAlphaComponent(0.15)
             } else {
                 let s = isSelected
                 self.isSelected = s
@@ -60,8 +60,8 @@ class Tile: View {
         tileNode.strokeColor = .label
 
         labelNode = SKLabelNode(fontNamed: UIFont.boldSystemFont(ofSize: 17).fontName)
-        labelNode.fontName = UIFont.boldSystemFont(ofSize: 17).fontName
-        labelNode.fontSize = 40
+        labelNode.fontName = Constant.font.fontName
+        labelNode.fontSize = Constant.font.pointSize
         labelNode.fontColor = .label
         super.init(bounds: frame, scene: scene)
 
@@ -91,6 +91,14 @@ private extension Tile {
 
     func updateLabelPosition() {
         labelNode.position = .init(x: bounds.minX + bounds.width / 2, y: bounds.minY + bounds.height / 2 - labelNode.frame.height / 2)
+    }
+
+}
+
+private extension Tile {
+
+    enum Constant {
+        static let font = UIFont.systemFont(ofSize: 40, weight: .bold).rounded
     }
 
 }

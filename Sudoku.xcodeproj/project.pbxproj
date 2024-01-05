@@ -26,6 +26,7 @@
 		710429BA2B45C117008A80DE /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429B92B45C117008A80DE /* Button.swift */; };
 		710429BD2B462F22008A80DE /* SudokuGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429BC2B462F22008A80DE /* SudokuGenerator.swift */; };
 		710429BF2B4631C6008A80DE /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429BE2B4631C6008A80DE /* GameBoard.swift */; };
+		710429C22B478AE9008A80DE /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710429C12B478AE9008A80DE /* UIFont.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		710429B92B45C117008A80DE /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		710429BC2B462F22008A80DE /* SudokuGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuGenerator.swift; sourceTree = "<group>"; };
 		710429BE2B4631C6008A80DE /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
+		710429C12B478AE9008A80DE /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 		710429762B459984008A80DE /* Sudoku */ = {
 			isa = PBXGroup;
 			children = (
+				710429C02B478AE3008A80DE /* Extension */,
 				710429BB2B462F1B008A80DE /* Model */,
 				710429B42B45B8D1008A80DE /* Scenes */,
 				710429B32B45B8C0008A80DE /* Resources */,
@@ -201,6 +204,14 @@
 				710429BE2B4631C6008A80DE /* GameBoard.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		710429C02B478AE3008A80DE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				710429C12B478AE9008A80DE /* UIFont.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +355,7 @@
 				710429AE2B45A686008A80DE /* Tile.swift in Sources */,
 				710429B12B45A891008A80DE /* Line.swift in Sources */,
 				710429802B459984008A80DE /* GameViewController.swift in Sources */,
+				710429C22B478AE9008A80DE /* UIFont.swift in Sources */,
 				710429BA2B45C117008A80DE /* Button.swift in Sources */,
 				710429782B459984008A80DE /* AppDelegate.swift in Sources */,
 				710429BF2B4631C6008A80DE /* GameBoard.swift in Sources */,

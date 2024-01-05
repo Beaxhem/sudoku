@@ -21,11 +21,11 @@ class Button: View {
 
     init(frame: CGRect, text: String, scene: SKScene) {
         backgroundNode = SKShapeNode(rect: frame)
-        backgroundNode.fillColor = .gray
         labelNode = SKLabelNode(fontNamed: UIFont.boldSystemFont(ofSize: 17).fontName)
         labelNode.text = text
-        labelNode.fontName = UIFont.boldSystemFont(ofSize: 17).fontName
-        labelNode.fontSize = 40
+        labelNode.fontName = Constant.font.fontName
+        labelNode.fontSize = Constant.font.pointSize
+        labelNode.fontColor = .systemBlue
         self.text = text
         super.init(bounds: frame, scene: scene)
 
@@ -51,6 +51,14 @@ private extension Button {
 
     func updateLabelPosition() {
         labelNode.position = .init(x: bounds.minX + bounds.width / 2, y: bounds.minY + bounds.height / 2 - labelNode.frame.height / 2)
+    }
+
+}
+
+private extension Button {
+
+    enum Constant {
+        static let font = UIFont.systemFont(ofSize: 40, weight: .bold).rounded
     }
 
 }
